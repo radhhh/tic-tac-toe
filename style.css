@@ -1,19 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+@font-face {
+    font-family: 'Nunito Extrabold';
+    src: url(nunito.extrabold.ttf);
+}
+
+@font-face {
+    font-family: 'Nunito Black';
+    src: url(nunito.black.ttf);
+}
+
 :root{
-    font-size: 14px;
+    font-size: 13px;
     font-family: 'Nunito', sans-serif;
 }
 
 body{
+    background-color: #2D2D2A;
+    color: #CDE7BE;
     margin: 0;
 }
 
 header{
+    font-family: 'Nunito Extrabold';
     display: grid;
-    border: solid red 2px;
+    position: fixed;
+    top: 0px;
+    box-sizing: border-box;
+    width: 100%;
     align-items: center;
-    padding: 0.5em;
+    padding: 1em;
     grid-template-columns: repeat(3, 1fr);
     align-content: center;
     justify-content: space-evenly;
@@ -27,11 +43,17 @@ header > .logo{
     margin: 0;
     font-weight: 900;
     font-size: 3rem;
+    font-family: 'Nunito Black';
+    letter-spacing: 0.1ch;
 }
 
 header > .turn-info{
+    font-family: 'Nunito Extrabold';
     text-align: center;
     font-size: 1.8rem;
+    background-color: #353831;
+    padding: 0.3em;
+    border-radius: 0.5em;
 }
 
 header > .action-button{
@@ -40,13 +62,23 @@ header > .action-button{
 
 .action-button > button{
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.4rem;
     width: 2.2ch;
-    background-color: white;
+    font-family: inherit;
     border: none;
+    color: inherit;
+    background-color: inherit;
+    font-weight: bold;
+    background-color: #353831;
+    border-radius: 0.3em;
+}
+
+.action-button > #menuButton{
+    margin-left: 0.2em;
 }
 
 main{
+    margin-top: 6em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,30 +86,108 @@ main{
 }
 
 div#gridContainer{
+    font-family: 'Nunito Black';
     display: grid;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5em;
     width: 100%;
     max-width: 30em;
-    /* border: solid blue 2px; */
 }
 
 div.gridItem{
-    border: green solid 2px;
+    font-size: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #353831;
     aspect-ratio: 1;
     width: 100%;
+    border-radius: 10%;
+}
+
+div.gridItem > .x-grid{
+    color: #D3E298;
+}
+
+div.gridItem > .o-grid{
+    color: #ECDD7B;
 }
 
 div#scoreContainer{
-    margin-top: 1em;
-    display: flex;
-    justify-content: space-between;
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
     max-width: 40em;
+    gap: 2em;
 }
 
 div#scoreContainer > div{
     font-size: 1.4rem;
     text-align: center;
+    border-radius: 0.5em;
+    background-color: #353831;
+    padding: 0.5em;
+}
+
+div.player-name{
+    font-size: 1.4rem;
+}
+
+div.player-score{
+    font-family: 'Nunino Black';
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+div#overlayDark{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0000007d;
+}
+
+.hidden{
+    transform: scale(0);
+    display: none;
+}
+
+div#restartConfirmWindow{
+    font-size: 1.4rem;
+    width: min(80%, 20ch);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #2D2D2A;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+div#restartConfirmWindow > h3{
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+div#restartConfirmWindow > div{
+    display: flex;
+    justify-content: space-between;
+    /* border: red solid 2px; */
+    width: 90%;
+    margin: auto;
+}
+
+div#restartConfirmWindow button{
+    display: block;
+    width: 8ch;
+    background-color: #353831;
+    color: #cde7bed4;
+    border: none;
+    font-size: 1.4rem;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
 }
