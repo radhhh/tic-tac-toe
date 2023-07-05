@@ -4,37 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div>
+        <div class="logo">
             <h1>XO</h1>
         </div>
-        <div>
-            <div>O</div>
-            <div>Turn</div>
+        <div class="turn-info">
+            <div id="turnIndicator">O TURN</div>
         </div>
-        <div>
-            <button>⟳</button>
-            <button>☰</button>
+        <div class="action-button">
+            <button id="reloadButton">⟳</button>
+            <button id="menuButton">☰</button>
         </div>
     </header>
+    <br><br><br><br><br><br><br>
     <main>
         <div id="gridContainer">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div class="gridItem" id="1-1"></div>
+            <div class="gridItem" id="1-2"></div>
+            <div class="gridItem" id="1-3"></div>
+            <div class="gridItem" id="2-1"></div>
+            <div class="gridItem" id="2-2"></div>
+            <div class="gridItem" id="2-3"></div>
+            <div class="gridItem" id="3-1"></div>
+            <div class="gridItem" id="3-2"></div>
+            <div class="gridItem" id="3-3"></div>
         </div>
         <div id="scoreContainer">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div>
+                <div>Player X</div>
+                <div>1</div>
+            </div>
+            <div>
+                <div>Tie</div>
+                <div>0</div>
+            </div>
+            <div>
+                <div>Player O</div>
+                <div>4</div>
+            </div>
         </div>
     </main>
 </body>
