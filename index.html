@@ -5,48 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
             <h1>XO</h1>
         </div>
-        <div class="turn-info">
-            <div id="turnIndicator">O TURN</div>
+        <div class="turn-container">
+            <div class="turn-info O" >
+                <div id="turnDisplay">O TURN</div>
+            </div>
         </div>
         <div class="action-button">
-            <button id="reloadButton">⟳</button>
             <button id="menuButton">☰</button>
         </div>
     </header>
     <main>
         <div id="gridContainer">
-            <div class="gridItem">
-                <div id="1-1" class="x-grid">X</div>
+            <div id="0" class="gridItem" onclick="handleClick(0)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="1-2"></div>
+            <div id="1" class="gridItem" onclick="handleClick(1)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="1-3" class="o-grid">O</div>
+            <div id="2" class="gridItem" onclick="handleClick(2)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="2-1" class="x-grid">X</div>
+            <div id="3" class="gridItem" onclick="handleClick(3)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="2-2"></div>
+            <div id="4" class="gridItem" onclick="handleClick(4)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="2-3"></div>
+            <div id="5" class="gridItem" onclick="handleClick(5)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="3-1"></div>
+            <div id="6" class="gridItem" onclick="handleClick(6)">
+                <div class="gridContent"></div>
             </div>
-            <div class="gridItem">
-                <div id="3-2" class="o-grid">O</div>            
+            <div id="7" class="gridItem" onclick="handleClick(7)">
+                <div class="gridContent"></div>            
             </div>
-            <div class="gridItem">
-                <div id="3-3"></div>
+            <div id="8" class="gridItem" onclick="handleClick(8)">
+                <div class="gridContent"></div>
             </div>
         </div>
         <div id="scoreContainer">
