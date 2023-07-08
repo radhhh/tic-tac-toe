@@ -169,39 +169,32 @@ div#overlayDark{
     transform: scale(0) !important;
 }
 
-div#restartConfirmWindow{
+div#newRoundWindow{
     font-size: 1.4rem;
-    width: min(80%, 20ch);
+    width: min(80%, 25ch);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     background-color: #2D2D2A;
-    padding: 1em;
+    padding: 1.5em 1em;
     border-radius: 1em;
 }
 
-div#restartConfirmWindow > h3{
+div#newRoundWindow > h3{
     margin: 0;
     margin-bottom: 0.5em;
 }
 
-div#restartConfirmWindow > div{
-    display: flex;
-    justify-content: space-between;
-    /* border: red solid 2px; */
-    width: 90%;
-    margin: auto;
-}
-
-div#restartConfirmWindow button{
+div#newRoundWindow button{
     display: block;
-    width: 8ch;
+    margin: 0.7em auto 0em;
+    width: 100%;
     background-color: #353831;
     color: #cde7bed4;
     border: none;
     font-size: 1.4rem;
-    padding: 0.2em 0.5em;
+    padding: 0.5em 0.5em;
     border-radius: 0.5em;
 }

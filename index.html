@@ -67,11 +67,11 @@
         </div>
     </main>
     <div id="overlayDark" class="hidden"></div>
-    <div id="restartConfirmWindow" class="hidden">
-        <h3>Are you sure?</h3>
+    <div id="newRoundWindow" class="hidden">
+        <h3 id="winnerText">Player X is the winner</h3>
         <div>
-            <button id="restartConfirm">Restart</button>
-            <button id="restartCancel">Cancel</button>
+            <button id="newGameButton" onclick="handleNewGame()">New Game</button>
+            <button id="nextRoundButton" onclick="handleNextRound()">Continue</button>
         </div>
     </div>
 </body>
