@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="action-button">
-            <button id="menuButton">☰</button>
+            <button id="menuButton" onclick="handlePauseButton()">☰</button>
         </div>
     </header>
     <main>
@@ -75,11 +75,18 @@
         </div>
     </div>
     <div id="modeSelectorWindow" class="popup">
-        <h3 id="winnerText">Select Mode</h3>
+        <h3>Select Mode</h3>
         <div>
             <button id="singleEasyButton" onclick="handleSelectMode('singleEasy')">Single Player (Easy)</button>
             <button id="singleMediumButton" onclick="handleSelectMode('singleMedium')">Single Player (Hard)</button>
             <button id="multiplayerButton" onclick="handleSelectMode('multiplayer')">Multiplayer</button>
+        </div>
+    </div>
+    <div id="pauseWindow" class="popup hidden">
+        <h3>Paused</h3>
+        <div>
+            <button id="newGameButton" onclick="handleNewGame()">New Game</button>
+            <button id="continueButton" onclick="handleContinue()">Continue</button>
         </div>
     </div>
 </body>

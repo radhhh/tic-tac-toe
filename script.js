@@ -67,6 +67,7 @@ const display = (() => {
     overlayDark = document.querySelector('#overlayDark'),
     newRoundWindow = document.querySelector('#newRoundWindow'),
     modeSelectorWindow = document.querySelector('#modeSelectorWindow');
+    pauseWindow = document.querySelector('#pauseWindow');
     winnerText = document.querySelector('#winnerText');
 
     const addPreview = function(playerID, location){
@@ -117,6 +118,14 @@ const display = (() => {
         modeSelectorWindow.classList.add('hidden');
         overlayDark.classList.add('hidden');
     }
+    const showPauseWindow = function(){
+        pauseWindow.classList.remove('hidden');
+        overlayDark.classList.remove('hidden');
+    }
+    const hidePauseWindow = function(){
+        pauseWindow.classList.add('hidden');
+        overlayDark.classList.add('hidden');
+    } 
     const resetGrid = function(){
         for(let i = 0; i < 9; i++){
             gridItem[i].className = "gridItem";
@@ -124,7 +133,7 @@ const display = (() => {
             gridContent[i].textContent = "";
         }
     }
-    return {addPreview, removePreview, showMove, updateTurn, updateScore, showWinGrid, showNewRound, hideNewRound, showModeSelector, hideModeSelector, resetGrid};
+    return {addPreview, removePreview, showMove, updateTurn, updateScore, showWinGrid, showNewRound, hideNewRound, showModeSelector, hideModeSelector, showPauseWindow, hidePauseWindow, resetGrid};
 })();
 
 const board = (() => {
@@ -164,8 +173,8 @@ const controller = (() => {
     // gameMode = 0 (multiplayer), 1 (single easy), 2 (single hard)
     let currentPlayer;
     const isActive = function(){return active};
-    const activate = function(){
-        active = true
+    const activate = function(status = true){
+        active = status;
     };
     const getTieCount = function(){
         return tieCount;
@@ -238,6 +247,7 @@ function handleClick(location){
 
 function handleNewGame(){
     display.hideNewRound();
+    display.hidePauseWindow();
     controller.resetScore();
     display.updateScore();
     display.resetGrid();
@@ -267,4 +277,14 @@ function handleSelectMode(selectedMode){
         case 'multiplayer':
             controller.newGame('multi');
     }
+}
+
+function handlePauseButton(){
+    controller.activate(false);
+    display.showPauseWindow();
+}
+
+function handleContinue(){
+    controller.activate();
+    display.hidePauseWindow();
 }

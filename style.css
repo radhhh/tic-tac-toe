@@ -114,7 +114,6 @@ div.gridItem.winning{
 
 div.gridItem > div{
     opacity: 0.3;
-    transform: scale(1));
 }
 
 div.gridItem > div.chosen{
