@@ -22,7 +22,7 @@ body{
 }
 
 header{
-    font-family: 'Nunito Extrabold';
+    font-family: 'Nunito Extrabold', 'Nunito', sans-serif;
     display: grid;
     position: fixed;
     top: 0px;
@@ -43,7 +43,7 @@ header > .logo{
     margin: 0;
     font-weight: 900;
     font-size: 3rem;
-    font-family: 'Nunito Black';
+    font-family: 'Nunito Black', 'Nunito', sans-serif;
     letter-spacing: 0.1ch;
 }
 
@@ -53,7 +53,7 @@ header .turn-info{
     border-radius: 0.5em;
     margin: auto;
     font-size: 1.8rem;
-    font-family: 'Nunito Extrabold';
+    font-family: 'Nunito Extrabold', 'Nunito', sans-serif;
     text-align: center;
     background-color: #353831;
 }
@@ -88,7 +88,7 @@ main{
 }
 
 div#gridContainer{
-    font-family: 'Nunito Black';
+    font-family: 'Nunito Black', 'Nunito', sans-serif;
     display: grid;
     align-items: center;
     grid-template-columns: repeat(3, 1fr);
@@ -151,7 +151,7 @@ div.player-name{
 }
 
 div.player-score{
-    font-family: 'Nunino Black';
+    font-family: 'Nunino Black', 'Nunito', sans-serif;
     font-weight: bold;
     font-size: 2rem;
 }
@@ -169,7 +169,7 @@ div#overlayDark{
     transform: scale(0) !important;
 }
 
-div#newRoundWindow{
+div.popup{
     font-size: 1.4rem;
     width: min(80%, 25ch);
     position: fixed;
@@ -182,12 +182,12 @@ div#newRoundWindow{
     border-radius: 1em;
 }
 
-div#newRoundWindow > h3{
+div.popup > h3{
     margin: 0;
     margin-bottom: 0.5em;
 }
 
-div#newRoundWindow button{
+div.popup button{
     display: block;
     margin: 0.7em auto 0em;
     width: 100%;

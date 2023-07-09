@@ -14,7 +14,7 @@
         </div>
         <div class="turn-container">
             <div class="turn-info O" >
-                <div id="turnDisplay">O TURN</div>
+                <div id="turnDisplay">X TURN</div>
             </div>
         </div>
         <div class="action-button">
@@ -54,7 +54,7 @@
         <div id="scoreContainer">
             <div>
                 <div class="player-name">PLAYER X</div>
-                <div class="player-score" id="displayX">1</div>
+                <div class="player-score" id="displayX">0</div>
             </div>
             <div>
                 <div class="player-name">TIE</div>
@@ -62,16 +62,24 @@
             </div>
             <div>
                 <div class="player-name">PLAYER O</div>
-                <div class="player-score" id="displayO">4</div>
+                <div class="player-score" id="displayO">0</div>
             </div>
         </div>
     </main>
-    <div id="overlayDark" class="hidden"></div>
-    <div id="newRoundWindow" class="hidden">
+    <div id="overlayDark" class=""></div>
+    <div id="newRoundWindow" class="popup hidden">
         <h3 id="winnerText">Player X is the winner</h3>
         <div>
             <button id="newGameButton" onclick="handleNewGame()">New Game</button>
             <button id="nextRoundButton" onclick="handleNextRound()">Continue</button>
+        </div>
+    </div>
+    <div id="modeSelectorWindow" class="popup">
+        <h3 id="winnerText">Select Mode</h3>
+        <div>
+            <button id="singleEasyButton" onclick="handleSelectMode('singleEasy')">Single Player (Easy)</button>
+            <button id="singleMediumButton" onclick="handleSelectMode('singleMedium')">Single Player (Hard)</button>
+            <button id="multiplayerButton" onclick="handleSelectMode('multiplayer')">Multiplayer</button>
         </div>
     </div>
 </body>
