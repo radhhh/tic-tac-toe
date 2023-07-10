@@ -35,7 +35,7 @@ const robot = (() => {
             }
             if((status[0] == status[1]) && isNaN(status[2])){
                 nextMove = track[2];
-                if(status[2] == 1) return;
+                if(status[0] == 1) return;
             }
         });
         if(nextMove != undefined) return nextMove;
@@ -76,6 +76,7 @@ const display = (() => {
     }
     const removePreview = function(location){
         gridContent[location].textContent = '';
+        gridContent[location].className = "gridContent";
     }
     const showMove = function(playerID, location){
         gridContent[location].textContent = player[playerID].symbol;
@@ -92,12 +93,12 @@ const display = (() => {
         oDisplay.textContent = player[1].score;
     }
     const showWinGrid = function(winningLine){
+        console.log('showWinGrid', winningLine);
         for(let i = 0; i < 9; i++){
             if(winningLine.some((index) => index == i)){
                 gridItem[i].classList.add('winning');
-                continue;
             }
-            gridContent[i].classList.remove('chosen');
+            else gridContent[i].classList.remove('chosen');
         }
     }
     const showNewRound = function(winningPlayer){
@@ -179,6 +180,9 @@ const controller = (() => {
     const getTieCount = function(){
         return tieCount;
     }
+    const getCurrentPlayer = function(){
+        return currentPlayer;
+    }
     const nextTurn = function(){
         currentPlayer = currentPlayer == 0 ? 1 : 0;
         display.updateTurn(currentPlayer);
@@ -238,11 +242,17 @@ const controller = (() => {
             setTimeout(() => {active = true; robot.move();}, 1000);
         }
     }
-    return {activate, isActive, getTieCount, newGame, movePlayer, newGame, nextRound, resetScore};
+    return {activate, isActive, getTieCount, getCurrentPlayer, newGame, movePlayer, newGame, nextRound, resetScore};
 })();
 
 function handleClick(location){
     if(board.isValid(location) && controller.isActive()) controller.movePlayer(location);
+}
+function addPreview(location){
+    if(board.isValid(location) && controller.isActive()) display.addPreview(controller.getCurrentPlayer(), location);
+}
+function removePreview(location){
+    if(board.isValid(location)) display.removePreview(location)
 }
 
 function handleNewGame(){
