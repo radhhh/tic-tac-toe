@@ -2,12 +2,13 @@ import * as board from "./board.js";
 
 const validTrack = [[0,1,2], [3,4,5], [6,7,8], [0,3,6],
                 [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
-const nextMove = {};
+const bestMoves = {};
 let difficulty = 1;
 
 export function setDifficulty(selectedDifficulty){
     difficulty = selectedDifficulty;
 }
+
 function easyBot(){
     const boardState = board.getState();
     const boardAvailableState = boardState
@@ -55,18 +56,31 @@ function mediumBot(){
 
 function hardBot(){
     const boardState = board.getState();
-    const possibleMoves = nextMove[boardState];
-    return possibleMoves[Math.round(Math.random() * possibleMoves.length)];
+    const bestMove = bestMoves[boardState].map(a => a[0]);
+    const selectedIndex = Math.floor(Math.random() * bestMove.length);
+    return bestMove[selectedIndex];
+}
+
+function insaneBot(){
+    const boardState = board.getState();
+    const bestMove = bestMoves[boardState].filter((val, idx, arr) => val[1] === arr[0][1]).map(a => a[0]);
+    const selectedIndex = Math.floor(Math.random() * bestMove.length);
+    return bestMove[selectedIndex];
 }
 
 export function getMove(){
+    const obviousMove = mediumBot();
     switch(difficulty){
         case 0:
-            const obviousMove = mediumBot();
+            return easyBot();
+        case 1:
             if(obviousMove !== undefined) return obviousMove;
             else return easyBot();
-        case 1:
+        case 2:
+            if(obviousMove !== undefined) return obviousMove;
             return hardBot();
+        case 3:
+            return insaneBot();
     }
 }
 
@@ -89,28 +103,25 @@ function flip(state){
     });
 }
 
-function precompute(state, moveCount){
-    if(checkWinning(state) === 1) return 1; // win
-    if(checkWinning(state) === 0) return -1; // lose
-    if(moveCount == 9) return 0;
+function precompute(state, moveCount){ // return [best result, possibility of mess up]
+    if(checkWinning(state) === 0) return [-1, 1]; // lose
+    if(moveCount == 9) return [0, 0];
 
     const nextState = flip(state);
-    let bestCase = -1, bestMove = [];
+    let bestCase = -1, worstCase = 1, possibleMoves = [[], [], []];
     for(let i = 0; i < 9; i++){
         if(!isNaN(nextState[i])) continue;
         nextState[i] = 0;
-        const result = precompute(nextState, moveCount + 1) * -1;
+        let [result, failChance] = precompute(nextState, moveCount + 1);
         nextState[i] = NaN;
-        if(result > bestCase){
-            bestMove = [];
-            bestCase = result;
-        }
-        if(result == bestCase){
-            bestMove.push(i);
-        }
+        
+        result *= -1;
+        possibleMoves[result+1].push([i, failChance]);
+        bestCase = Math.max(bestCase, result);
+        worstCase = Math.min(bestCase, result);
     }
-    nextMove[state] = bestMove;
-    return bestCase;
+    bestMoves[state] = possibleMoves[bestCase+1].sort((a, b) =>  a[1] < b[1]);
+    return [bestCase, possibleMoves[worstCase+1].length / possibleMoves.flat(1).length];
 }
 
 precompute([NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN], 0);

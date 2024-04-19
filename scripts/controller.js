@@ -33,7 +33,6 @@ function winGame(result){
     active = false;
     player[currentPlayer].score++;
     display.updateScore(player[0].score, tieCount, player[1].score);
-    console.log('winGame', currentPlayer);
     setTimeout(() => {
         display.showNewRound(currentPlayer);
     }, 1000);
@@ -42,7 +41,6 @@ function tieGame(){
     active = false;
     tieCount++;
     display.updateScore(player[0].score, tieCount, player[1].score); 
-    console.log('tieGame');
     setTimeout(() => {
         display.showNewRound();
     }, 1000);

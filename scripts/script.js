@@ -44,8 +44,17 @@ window.handleSelectMode = function handleSelectMode(selectedMode){
             robot.setDifficulty(1);
             controller.newGame('single');
             break;
+        case 'singleHard':
+            robot.setDifficulty(2);
+            controller.newGame('single');
+            break;
+        case 'singleInsane':
+            robot.setDifficulty(3);
+            controller.newGame('single');
+            break;
         case 'multiplayer':
             controller.newGame('multi');
+            break;
     }
 }
 

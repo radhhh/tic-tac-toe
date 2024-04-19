@@ -22,9 +22,7 @@ export function isValid(index){
 }
 export function movePlayer(playerID, index){
     state[index] = playerID;
-    console.log(state);
 }
 export function reset(){
     state = defaultState.slice();
-    console.log(state);
 }

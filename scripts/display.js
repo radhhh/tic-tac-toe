@@ -36,7 +36,6 @@ export function updateScore(playerScore1, tieScore, playerScore2){
     oDisplay.textContent = playerScore2;
 }
 export function showWinGrid(winningLine){
-    console.log('showWinGrid', winningLine);
     for(let i = 0; i < 9; i++){
         if(winningLine.some((index) => index == i)){
             gridItem[i].classList.add('winning');
